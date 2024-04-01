@@ -9,34 +9,29 @@ const Addproduct = (props: Props) => {
   <div className="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl">
     <div className="flex">
       <h1 className="font-bold uppercase text-5xl">
-        Send us a <br /> message
+       Thêm mới <br /> Product
       </h1>
     </div>
     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
       <input
         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
         type="text"
-        placeholder="First Name*"
+        placeholder="Tên sản phẩm*"
       />
       <input
         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
         type="text"
-        placeholder="Last Name*"
+        placeholder="Giá sản phẩm*"
       />
       <input
         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
         type="email"
-        placeholder="Email*"
-      />
-      <input
-        className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-        type="number"
-        placeholder="Phone*"
+        placeholder="Ảnh*"
       />
     </div>
     <div className="my-4">
       <textarea
-        placeholder="Message*"
+        placeholder="Mô tả*"
         className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
         defaultValue={""}
       />
@@ -46,7 +41,7 @@ const Addproduct = (props: Props) => {
         className="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
                 focus:outline-none focus:shadow-outline"
       >
-        Send Message
+        Submit
       </button>
     </div>
   </div>

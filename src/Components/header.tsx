@@ -10,12 +10,14 @@ import link from './anh/LinkedIn.png'
 import twitter from './anh/Twitter.png'
 import nguoi from './anh/user.png'
 import logo from './anh/Ddsgnr Library.png'
+import { NavLink } from 'react-router-dom'
 type Props = {}
 
 const Header = (props: Props) => {
   return (
 
     <>
+    <button className='border-4'><NavLink to="/Dashboard">nút bẩm tạm sang admin</NavLink></button>
     <div className='container mx-auto w-[1400px]'>
       
       <div className='up py-[15px] flex justify-between font-medium'>
