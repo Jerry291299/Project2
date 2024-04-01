@@ -51,10 +51,10 @@ const Header = (props: Props) => {
         <img src={logo} alt=""/>
         <div className='right flex'>
           <div className="text flex gap-14 pt-[7px] text-lg">
-            <p className='hover:border-b-2 border-black'>Home</p>
-            <p className='hover:border-b-2 border-black'>Products</p>
-            <p className='hover:border-b-2 border-black'>About Us</p>
-            <p className='hover:border-b-2 border-black'>Contact</p>
+            <a href='' className='hover:border-b-2 border-black'>Home</a>
+            <a href='' className='hover:border-b-2 border-black'>Products</a>
+            <a href='' className='hover:border-b-2 border-black'>About Us</a>
+            <a href='' className='hover:border-b-2 border-black'>Contact</a>
           </div>
 
 

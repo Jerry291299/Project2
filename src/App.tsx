@@ -7,6 +7,9 @@ import CLients from './Layout/CLients';
 import Home from './Layout/Home';
 import Dashboard from './Layout/Dashboard';
 import Detail from './Components/Detail';
+import Addproduct from './Components/Admin/Addproduct';
+import Editproduct from './Components/Admin/Editproduct';
+import Productslist from './Components/Admin/Productslist';
 
 function App() {
   return (
@@ -14,13 +17,17 @@ function App() {
       <Routes>
         <Route path="/" Component={CLients}>
 
-              <Route path="" Component={Home}></Route>
-              <Route path='Detail/:id' Component={Detail}></Route>
+          <Route path="" Component={Home}></Route>
+          <Route path='Detail/:id' Component={Detail}></Route>
 
           
         </Route>
 
-        <Route path='/Dasboard' Component={Dashboard}>
+        <Route path='/Dashboard' Component={Dashboard}>
+
+          <Route path="list" Component={Productslist}></Route>
+          <Route path="Add" Component={Addproduct}></Route>
+          <Route path="Edit/:id" Component={Editproduct}></Route>
 
 
         </Route>
