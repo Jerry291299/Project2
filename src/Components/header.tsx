@@ -41,7 +41,8 @@ const Header = (props: Props) => {
 
           <div className='flex'>
           <img className='scale-[0.9] pl-[30px] pr-[10px]' src={nguoi} alt=""/>
-          <p>Sign in</p>
+          <NavLink to="/login"><p>Sign in</p></NavLink>
+          
           </div>
         </div>
         </div>

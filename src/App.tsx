@@ -10,6 +10,8 @@ import Detail from './Components/Detail';
 import Addproduct from './Components/Admin/Addproduct';
 import Editproduct from './Components/Admin/Editproduct';
 import Productslist from './Components/Admin/Productslist';
+import login from './Components/login';
+import register from './Components/register';
 
 function App() {
   return (
@@ -20,8 +22,12 @@ function App() {
           <Route path="" Component={Home}></Route>
           <Route path='Detail/:id' Component={Detail}></Route>
 
+
           
         </Route>
+
+        <Route path="/login" Component={login}></Route>
+        <Route path="/register" Component={register}></Route>
 
 
         <Route path='/Dashboard' Component={Dashboard}>
