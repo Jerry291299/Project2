@@ -111,7 +111,7 @@ const register = (props: Props) => {
               href="#"
               className="font-medium text-primary-600 hover:underline dark:text-primary-500"
             >
-                                <NavLink to="/login">Sign in</NavLink>
+            <NavLink to="/login">Sign in</NavLink>
             </a>
           </p>
         </form>

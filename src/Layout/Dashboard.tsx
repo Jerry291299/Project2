@@ -10,9 +10,10 @@ type Props = {}
 const Dashboard = (props: Props) => {
   return (
     <>
+    <div className='flex'>
     <Navbar/>
     <Outlet/>
-    
+    </div>
     </>
   )
 }
