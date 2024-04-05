@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -12,8 +12,17 @@ import Editproduct from './Components/Admin/Editproduct';
 import Productslist from './Components/Admin/Productslist';
 import login from './Components/login';
 import register from './Components/register';
+import { IProduct } from './Interface/product';
+import { getAllProduct } from './service/productService';
 
 function App() {
+  const [products,setProduct] = useState<IProduct[]>([])
+  useEffect(()=>{
+    (async ()=>{
+      const products = await getAllProduct()
+      setProduct(products)
+    })()
+  },[])
   return (
     <BrowserRouter>
       <Routes>
@@ -32,9 +41,9 @@ function App() {
 
         <Route path='/Dashboard' Component={Dashboard}>
 
-          <Route path="list" Component={Productslist}></Route>
+          <Route path="list" element={<Productslist products={products} setProduct={setProduct}/>}></Route>
           <Route path="Add" Component={Addproduct}></Route>
-          <Route path="Edit/:id" Component={Editproduct}></Route>
+          <Route path="list/edit/:id" Component={Editproduct}></Route>
 
 
         </Route>

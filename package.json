@@ -11,7 +11,6 @@
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "axios": "^1.6.8",
-    "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
@@ -24,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "db": "npx json-server db.json -m ./node_modules/json-server-auth"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
   }
 }

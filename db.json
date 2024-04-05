@@ -1,11 +1,32 @@
 {
   "products": [
     {
-      "name": "test add",
-      "image": "https://hips.hearstapps.com/hmg-prod/images/2024-nissan-z-nismo-116-64c8117a866f8.jpg?crop=0.872xw:0.654xh;0.00641xw,0.274xh&resize=1200:*",
-      "price": "22",
-      "desc": "test desc",
+      "name": "test edit",
+      "image": "2123dddwq",
+      "price": "4",
+      "desc": "qwdqw222",
       "id": 1
+    },
+    {
+      "name": "test delete edit",
+      "image": "dasad121212",
+      "price": "6",
+      "desc": "d1d231123",
+      "id": 2
+    },
+    {
+      "name": "test edit",
+      "image": "1212312",
+      "price": "12",
+      "desc": "dadsa",
+      "id": 3
+    },
+    {
+      "name": "tesst eff",
+      "image": "12321312sadas",
+      "price": "14",
+      "desc": "adasassda",
+      "id": 4
     }
   ]
 }
