@@ -27,6 +27,33 @@
       "price": "14",
       "desc": "adasassda",
       "id": 4
+    },
+    {
+      "name": "test add sau login",
+      "image": "12đ2d212",
+      "price": "20",
+      "desc": "21dw221",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "email": "ungductrungtrung@gmail.com",
+      "password": "$2a$10$XLq0AxM3YhbVMMMrvyj5EurVQIEDvXozkt.I.uaol4R5KFqNFtywW",
+      "name": "Jerry2912",
+      "id": 1
+    },
+    {
+      "email": "ungductrung10d2@gmail.com",
+      "password": "$2a$10$u9A3nos.EF.J4WwEIMYmyedISQpE3ClMzFC4yomX076KkYKxOY9.K",
+      "name": "test alert",
+      "id": 2
+    },
+    {
+      "email": "testlogin@gmail.com",
+      "password": "$2a$10$NDAEJNR2HjEz1qz7nRXPBePasN1Rhbesn5tKqrFMs4HS/WAUR765q",
+      "name": "test login",
+      "id": 3
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import CLients from './Layout/CLients';
  // Assuming correct file path
 import Home from './Layout/Home';
@@ -14,10 +14,12 @@ import login from './Components/login';
 import register from './Components/register';
 import { IProduct } from './Interface/product';
 import { getAllProduct } from './service/productService';
-
+import Privaterouter from './privaterouter';
+import Login from './Components/login';
 function App() {
   const [products,setProduct] = useState<IProduct[]>([])
-  useEffect(()=>{
+  
+   useEffect(()=>{
     (async ()=>{
       const products = await getAllProduct()
       setProduct(products)
@@ -35,11 +37,11 @@ function App() {
           
         </Route>
 
-        <Route path="/login" Component={login}></Route>
-        <Route path="/register" Component={register}></Route>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" Component={register} ></Route>
 
 
-        <Route path='/Dashboard' Component={Dashboard}>
+        <Route path='/Dashboard' element={<Privaterouter><Dashboard/></Privaterouter>} >
 
           <Route path="list" element={<Productslist products={products} setProduct={setProduct}/>}></Route>
           <Route path="Add" Component={Addproduct}></Route>

@@ -1,9 +1,13 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-type Props = {}
+type Props = {
+  handleLogout:()=>void
+}
 
-const Navbar = (props: Props) => {
+const Navbar = ({handleLogout}: Props) => {
+  
+  
   return (
    <>
 <>
@@ -26,6 +30,12 @@ const Navbar = (props: Props) => {
         <li className='py-[20px]'>
             <NavLink className="text-white font-bold text-[25px] hover:border-2 rounded-xl px-[25px] py-[15px]  hover:text-black hover:bg-white" to="/Dashboard/Add">Add product</NavLink>
         </li>
+        <li className='py-[20px]'>
+            <NavLink className="text-white font-bold text-[25px] hover:border-2 rounded-xl px-[25px] py-[15px]  hover:text-black hover:bg-white" to="/">
+              <button onClick={handleLogout}>Logout</button>
+            </NavLink>
+        </li>
+
         {/* <li>
         <NavLink className="text-white font-bold text-[25px] " to="/Dashboard/Add">Add product</NavLink>
         </li>

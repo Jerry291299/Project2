@@ -1,17 +1,24 @@
 import React from 'react'
 import Header from '../Components/header'
 import Footer from '../Components/footer'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import Navbar from '../Components/Admin/Navbar'
 
 
-type Props = {}
+type Props = {
+}
 
-const Dashboard = (props: Props) => {
+const Dashboard = (props:Props) => {
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    alert('logout')
+    sessionStorage.removeItem('user')
+    navigate('/')
+  }
   return (
     <>
     <div className='flex'>
-    <Navbar/>
+    <Navbar handleLogout={handleLogout}/>
     <Outlet/>
     </div>
     </>

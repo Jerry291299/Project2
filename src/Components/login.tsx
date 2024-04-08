@@ -1,9 +1,38 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, Navigate, useNavigate } from 'react-router-dom'
+import { UserLogin } from '../service/Auth'
 
 type Props = {}
 
-const login = (props: Props) => {
+const Login = (props: Props) => {
+
+const [email, setEmail] = useState<string>('')
+const [password, setPassword] = useState<string>('')
+const [message, setMessage] = useState<string>('')
+const navigate = useNavigate()
+const handleSubmit = async (e:any) => {
+  e.preventDefault()
+  // console.log(email,password);
+  
+  try{
+  const user = await UserLogin({email, password})
+  if(user?.name==="AxiosError"){
+    setMessage(user.response.data)
+    }else {
+      console.log(user);
+      
+      sessionStorage.setItem("user",JSON.stringify(user))
+      setMessage("dang nhap thanh cong")
+      setTimeout(()=>{
+        navigate('/dashboard')
+      },2000)
+    }
+  } catch (error){
+    
+    setMessage((error as Error)?.message)
+  }
+}
+
   return (
    <>
    <section className="bg-gray-50 dark:bg-gray-900">
@@ -24,7 +53,8 @@ const login = (props: Props) => {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Sign in to your account
         </h1>
-        <form className="space-y-4 md:space-y-6" action="#">
+        {message}
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" action="#">
           <div>
             <label
               htmlFor="email"
@@ -35,9 +65,9 @@ const login = (props: Props) => {
             <input
               type="email"
               name="email"
-              id="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@company.com"
+              onChange={(e:any)=>{setEmail(e.target.value)}}
               
             />
           </div>
@@ -51,10 +81,9 @@ const login = (props: Props) => {
             <input
               type="password"
               name="password"
-              id="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             
+              onChange={(e:any)=>{setPassword(e.target.value)}}
             />
           </div>
           <div className="flex items-center justify-between">
@@ -112,4 +141,4 @@ const login = (props: Props) => {
   )
 }
 
-export default login
+export default Login

@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { UserRegister } from '../service/Auth'
+
 
 type Props = {}
 
-const register = (props: Props) => {
+const Register = (props: Props) => {
+    const [name, setName] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [message, setMessage] = useState<string>("")
+
+    const handleSubmit = async (e:any) => {
+        e.preventDefault()
+        try{
+            const data = await UserRegister({name, email, password})
+            if(data?.name==="Axioserror"){
+                setMessage(data.response.data)
+            } else {
+                setMessage('Dang ky thanh cong')
+                alert({message})
+            }
+        } catch (error){
+            console.log(error);
+            
+        }
+    }
+
   return (
-   <>
-   <section className="bg-gray-50 dark:bg-gray-900">
+    <>
+     <section className="bg-gray-50 dark:bg-gray-900">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <a
       href="#"
@@ -17,14 +40,35 @@ const register = (props: Props) => {
         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
         alt="logo"
       />
-      Flowbite
+      Dang ky tai khoan
     </a>
+
+    
+    
     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Create and account
         </h1>
-        <form className="space-y-4 md:space-y-6" action="#">
+        
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" action="#">
+
+        <div>
+            <label
+              htmlFor="name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Your name
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name"
+              onChange={(e:any)=>{setName(e.target.value)}}
+            />
+          </div>
+
           <div>
             <label
               htmlFor="email"
@@ -35,10 +79,9 @@ const register = (props: Props) => {
             <input
               type="email"
               name="email"
-              id="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@company.com"
-              
+              onChange={(e:any)=>{setEmail(e.target.value)}}
             />
           </div>
           <div>
@@ -51,26 +94,10 @@ const register = (props: Props) => {
             <input
               type="password"
               name="password"
-              id="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="confirm-password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Confirm password
-            </label>
-            <input
-              type="confirm-password"
-              name="confirm-password"
-              id="confirm-password"
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              
+              onChange={(e:any)=>{setPassword(e.target.value)}}
+
             />
           </div>
           <div className="flex items-start">
@@ -117,12 +144,13 @@ const register = (props: Props) => {
         </form>
       </div>
     </div>
+
+
+
   </div>
 </section>
-
-   
-   </>
+    </>
   )
 }
 
-export default register
+export default Register
