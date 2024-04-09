@@ -17,7 +17,7 @@ const Header = (props: Props) => {
   return (
 
     <>
-    <button className='border-4'><NavLink to="/Dashboard">nút bẩm tạm sang admin</NavLink></button>
+    {/* <button className='border-4'><NavLink to="/Dashboard">nút bẩm tạm sang admin</NavLink></button> */}
     <div className='container mx-auto w-[1400px]'>
       
       <div className='up py-[15px] flex justify-between font-medium'>

@@ -31,6 +31,9 @@ const Navbar = ({handleLogout}: Props) => {
             <NavLink className="text-white font-bold text-[25px] hover:border-2 rounded-xl px-[25px] py-[15px]  hover:text-black hover:bg-white" to="/Dashboard/Add">Add product</NavLink>
         </li>
         <li className='py-[20px]'>
+            <NavLink className="text-white font-bold text-[25px] hover:border-2 rounded-xl px-[25px] py-[15px]  hover:text-black hover:bg-white" to="/">Trang chủ</NavLink>
+        </li>
+        <li className='py-[20px]'>
             <NavLink className="text-white font-bold text-[25px] hover:border-2 rounded-xl px-[25px] py-[15px]  hover:text-black hover:bg-white" to="/">
               <button onClick={handleLogout}>Logout</button>
             </NavLink>

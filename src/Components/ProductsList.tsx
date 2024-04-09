@@ -12,6 +12,8 @@ import anhbaner from"./anh/unsplash_pxoZSTdAzeU.png"
 import anh0 from "./anh/Image.png"
 import anh6 from "./anh/anh6.png"
 import anh5 from "./anh/anh5.png"
+import { getAllProduct } from "../service/productService";
+import { IProduct } from "../Interface/product";
 type Props = {
 };
 
@@ -20,6 +22,19 @@ const Productlist = (props: Props) => {
     const [load,setLoad] = useState(true)
     const [products,setProduct] = useState([])
     const [page,setPage] =  useState(1)
+
+    useEffect(()=>{
+      const fetchData = async () => {
+        try {
+          const data = await getAllProduct()
+          setProduct(data)
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
+      fetchData()
+    },[setProduct])
 const handleClick = ()=>{
     setStatus(!status)
 }
@@ -48,79 +63,23 @@ const buttonClickprev =()=>{
     <button className="border-2 border-black rounded-lg p-[4px]">View all</button>
    </div>
     <div className="pt-[40px] grid grid-cols-4 gap-4">
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh16} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Round Dining Table</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Bed table</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh15} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Right Hand Fabric</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Desk decor</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh13} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Velvet Wingback Chair</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Basket</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh12} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Velvet Wingback Chair</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Chair</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh10} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Product name</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Vase</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh9} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Velvet Dining Chair</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Armchair</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh8} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Jute Pouffe Whiter</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Ficus</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      <div className="pt-[40px]">
-        <img className="w-[100%]" src={anh7} alt="" />
-        <div className="flex  ">
-          <h2 className="text-[18px] font-bold">Fabric Dining Chair</h2>
-          <p className="text-[20px] font-bold pl-[110px]">$55</p>
-        </div>
-        <p>Wall art</p>
-        <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
-      </div>
-      </div>
+
+      {products.map((product: IProduct, index:number)=> (
+              <div className="pt-[40px] w-[320px]">
+              <img className="w-[100%]" src={product.image} alt="" />
+              <div className="flex justify-between ">
+                <h2 className="text-[18px] font-bold">{product.name}</h2>
+                <p className="text-[20px] font-bold pl-[110px]">${product.price}</p>
+              </div>
+              <p>{product.desc}</p>
+              <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
+            </div>
+      
+      ))}
+
+
+
+
     </div>
     <div className=" pt-[70px] pb-[80px] ">
       <div className="flex bg-black h-[400px]">
@@ -215,6 +174,7 @@ const buttonClickprev =()=>{
         <button className="border-2 border-black rounded-lg py-[5px] px-[125px] mt-[10px]">Add to cart</button>
       </div>
       </div>
+    </div>
     </div>
     </div>
     </div>
