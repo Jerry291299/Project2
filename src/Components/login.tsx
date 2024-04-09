@@ -25,7 +25,7 @@ const handleSubmit = async (e:any) => {
       setMessage("dang nhap thanh cong")
       setTimeout(()=>{
         navigate('/dashboard')
-      },2000)
+      },1500)
     }
   } catch (error){
     
